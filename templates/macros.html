@@ -1,0 +1,70 @@
+{% macro mini_logo(classes, title, siteurl, logourl) %}
+<figure class="mini_logo {{ classes }}">
+    <a href="{{siteurl}}" style="background-image: url({{siteurl}}/img/{{logourl}})"></a>
+</figure>
+<h5>
+    <a href="{{siteurl}}">{{title}}</a>
+</h5>
+{% endmacro mini_logo %}
+
+<!-- classes=any extra styling, bsize=buttonsize, extra=config.extra, siteurl=config.base_url -->
+{% macro social_list(classes, bsize, extra, rss, siteurl) %}
+<ul class="social_list {{classes}}" >
+    {% if extra.cv %}
+    <li class="button {{bsize}} font_faint"><a href="{{extra.cv}}" target="_blank">cv</a></li>
+    {% endif %}
+    {% if extra.resume %}
+    <li class="button {{bsize}} font_faint"><a href="https://{{extra.resume}}" target="_blank">resume</a></li>
+    {% endif %}
+    <li class="button {{bsize}} font_faint"><a href="{{extra.branda}}" target="_blank">branda</a></li>
+    {% if extra.linkedin %}
+        <li><a href="{{extra.linkedin}}" target="_blank">LinkedIn</a><i class="fab fa-linkedin" ></i></li>
+    {% endif %}
+    {% if extra.email %}
+    <li class="button {{bsize}} font_faint"><a href="mailto:{{extra.email}}?subject=hi" target="_blank">Contact me</a><i class="fas fa-envelope" ></i></li>
+    {% endif %}
+    {% if rss %}
+    <li class="button {{bsize}} font_faint"><a href="{{siteurl}}/rss.xml" target ="_blank">rss</a><i class="fas fa-rss" ></i></li>
+    {% endif %}
+</ul>
+{% endmacro social_list %}
+
+{% macro frontmatter(classes, date, word_count, read_time) %}
+<ul class="frontmatter {{classes}}" id="frontmatter">
+    <li>
+        <time class="article_time"  datetime="{{date}}">{{ date | date(format="%B %d, %Y") }}</time>
+    </li>
+    <span class="dotDivider"></span>
+    <li> {{word_count}} words </li>
+    <span class="dotDivider" ></span>
+    <li> {{read_time}} min </li>
+</ul>
+{% endmacro frontmatter %}
+
+{% macro menu(title, siteurl, extra, rss) %}
+<input type="checkbox" id="openSidebarMenu" class="openSidebarMenu">
+<label class="menu cross menu--1" for="openSidebarMenu">
+    <svg viewBox="0 0 75 75" xmlns="https://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="30" />
+        <path class="line--1" d="M0 40h62c13 0 6 28-4 18L35 35" />
+        <path class="line--2" d="M0 50h70" />
+        <path class="line--3" d="M0 60h62c13 0 6-28-4-18L35 65" />
+    </svg>
+</label>
+
+<div id="sidebarMenu">
+    <div class="menu_wrapper">
+        <ul class="sidebarMenuInner">
+            <li>
+                <a href="{{siteurl}}" >{{title}}</a>
+                <div class="menu_div" ></div>
+            </li>
+            <li><a target="_blank">Publications:</a></li>
+            <li><a href="{{extra.article}}" target="_blank">Unit Testing article</a></li>
+            {% if rss %}
+            <li><a href="{{siteurl}}/rss.xml" target ="_blank">rss</a><i class="fas fa-rss" ></i></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% endmacro menu %}
