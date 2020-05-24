@@ -59,8 +59,11 @@
                 <a href="{{siteurl}}" >{{title}}</a>
                 <div class="menu_div" ></div>
             </li>
-            <li><a target="_blank">Publications:</a></li>
+          <!--  <li><a style = "text-decoration: underline;" target="_blank">Publications:</a></li> -->
+            <u style="padding-left: 3em;">Publications:<br></u>
+            <br>
             <li><a href="{{extra.article}}" target="_blank">Unit Testing article</a></li>
+            <li><a href="{{extra.thesis}}" target="_blank">Optimizing Concurrent Query Mixes (Senior Thesis)</a></li>
             {% if rss %}
             <li><a href="{{siteurl}}/rss.xml" target ="_blank">rss</a><i class="fas fa-rss" ></i></li>
             {% endif %}
