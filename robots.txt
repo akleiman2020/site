@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://akleiman2020.github.io/site/sitemap.xml
